@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App Hub</string>
+    <string name="usage">Usage: apphub://&lt;package.name&gt;</string>
+    <string name="app_not_found">App not found: %1$s</string>
+</resources>
