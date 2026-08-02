@@ -5,3 +5,8 @@ local.properties
 .idea/
 *.iml
 .DS_Store
+
+# 署名情報（絶対にコミットしない）
+keystore.properties
+*.jks
+*.keystore
