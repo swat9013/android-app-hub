@@ -1,0 +1,15 @@
+# worktree 作成時にコピーする gitignored ファイル (.gitignore 構文)
+#
+# 判定基準: これが無いと新しい worktree でビルド・署名が失敗するもの。
+# 再生成可能なもの (.gradle/ build/ app/build/) はコピーしない。
+# Gradle の依存キャッシュは repo 外の ~/.gradle にあり全 worktree で共有されるため、
+# worktree ごとの初期化コマンドは不要 (hook script は設置していない)。
+
+# Android SDK の位置。無いと Gradle が SDK を解決できずビルドが失敗する
+local.properties
+
+# 署名情報。再生成不可で、release ビルドに必須
+# (現時点では未配置。keystore.properties.example を元に各自が作成する)
+keystore.properties
+*.jks
+*.keystore
