@@ -54,19 +54,22 @@ keytool -genkeypair -v -keystore upload-keystore.jks \
 
 ### リリースごと: APK をビルドしてアップロード
 
-1. `app/build.gradle.kts` の `versionCode`（整数を +1）と `versionName` を上げる
+1. リリースする version を決める（`vMAJOR.MINOR.PATCH`、例 `v1.2.3`）
 2. 署名付き APK をビルド:
 
    ```sh
-   ./gradlew assembleRelease
+   ./gradlew assembleRelease -PversionName=1.2.3
    # 出力: app/build/outputs/apk/release/app-release.apk
    ```
 
+   `versionCode` は `versionName` から自動算出される（算出方法は `app/build.gradle.kts` のコメント参照）。
+   算出済みの値を直接渡したい場合は `-PversionCode=10203` を追加で指定すればそちらが優先される。
    `keystore.properties` があれば自動で署名される（無ければ未署名ビルドになりインストール不可）。
+   property を省略するとプレースホルダ値（`versionName=1.0` / `versionCode=1`）でビルドされる。
 3. GitHub Release を作成し APK を添付:
 
    ```sh
-   VERSION=v1.0.0
+   VERSION=v1.2.3
    git tag "$VERSION" && git push origin "$VERSION"
    gh release create "$VERSION" \
      app/build/outputs/apk/release/app-release.apk \
