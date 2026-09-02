@@ -111,3 +111,7 @@ CI が使えない、または CI が失敗した場合の代替手順。**tag �
 - Android 11+ のパッケージ可視性は `<queries>`（MAIN + LAUNCHER）で対応し、
   `QUERY_ALL_PACKAGES` 権限は使わない
 - URI のパース処理は `DeepLink.extractPackageName` に分離し、JUnit でテスト
+
+## ライセンス
+
+[MIT License](LICENSE)
